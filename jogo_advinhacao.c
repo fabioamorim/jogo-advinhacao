@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define NUMERO_DE_TENTATIVAS 5
+
 int main(){
 
 	//Imprime o cabeçalho do jogo	
@@ -7,31 +9,36 @@ int main(){
 	printf("*Bem vindo ao jogo de advinhacao!*\n");
 	printf("**********************************\n");
 
-	int num_secreto = 42;
+	int numSecreto = 42;
 	int chute;
 
-	printf("Qual e' o seu chute? ");
-	scanf("%d",&chute);
-	printf("\nSeu chute foi %d\n", chute);
+	for(int i=1;i<=NUMERO_DE_TENTATIVAS;i++){
 
-	int acertou = (chute == num_secreto);// Se verdadeiro retorna 1 se falso retorna 0.
+		printf("tentativa %d de %d\n",i,NUMERO_DE_TENTATIVAS);
 
-	if(acertou){
-		printf("Parabens, voce acertou!\n");
-		printf("Voce e' um otimo jogador, tente de novo!\n");
-	}else{
+		printf("Qual e' o seu chute? ");
+		scanf("%d",&chute);
+		printf("\nSeu chute foi %d\n", chute);
 
-		printf("Que pena, voce errou. ");
+		int acertou = (chute == numSecreto);// Se verdadeiro retorna 1 se falso retorna 0.
 
-		int maior = chute > num_secreto; 
-
-		if(maior){
-			printf("Seu chute e' maior que o numero secreto\n");
+		if(acertou){
+			printf("Parabens, voce acertou!\n");
+			printf("Voce e' um otimo jogador, tente de novo!\n");
+			break;
 		}else{
-			printf("Seu chute e' menor que o numero secreto\n");
-		}
 
-	}
+			printf("Que pena, voce errou. ");
+
+			int maior = chute > numSecreto; 
+
+			if(maior){
+				printf("Seu chute e' maior que o numero secreto\n");
+			}else{
+				printf("Seu chute e' menor que o numero secreto\n");
+			}
+	}		
+}
 
 
 	printf("Fim de jogo!");
