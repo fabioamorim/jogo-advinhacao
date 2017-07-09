@@ -8,7 +8,12 @@ int main(){
 	printf("*Bem vindo ao jogo de advinhacao!*\n");
 	printf("**********************************\n");
 
-	int numSecreto = 42;
+	int segundos = time(0);// pega a data em segundos desde 01/abril/1970 até o momento.
+	srand(segundos);// gerando a semente para o número radômico.
+
+	int numGrande= rand();
+
+	int numSecreto = numGrande % 100;
 	int chute = 0;
 	int tentativa = 1;
 	double pontos = 1000;
@@ -42,6 +47,7 @@ int main(){
 		pontos = pontos - pontosPerdidos;
 
 		tentativa++;
+
 	}	
 
 	printf("Seu score: %.1f\n",pontos);
